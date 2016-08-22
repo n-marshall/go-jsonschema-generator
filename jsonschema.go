@@ -12,32 +12,32 @@ import (
 
 const DEFAULT_SCHEMA = "http://json-schema.org/schema#"
 
-type Document struct {
+type Schema struct {
 	Schema string `json:"$schema,omitempty"`
 	property
 }
 
-// Reads the variable structure into the JSON-Schema Document
-func (d *Document) Read(variable interface{}) {
+// Reads the variable structure into the JSON-Schema Schema
+func (d *Schema) Read(variable interface{}) {
 	d.setDefaultSchema()
 
 	value := reflect.ValueOf(variable)
 	d.read(value.Type(), tagOptions(""))
 }
 
-func (d *Document) setDefaultSchema() {
+func (d *Schema) setDefaultSchema() {
 	if d.Schema == "" {
 		d.Schema = DEFAULT_SCHEMA
 	}
 }
 
-// Marshal returns the JSON encoding of the Document
-func (d *Document) Marshal() ([]byte, error) {
+// Marshal returns the JSON encoding of the Schema
+func (d *Schema) Marshal() ([]byte, error) {
 	return json.MarshalIndent(d, "", "    ")
 }
 
-// String return the JSON encoding of the Document as a string
-func (d *Document) String() string {
+// String return the JSON encoding of the Schema as a string
+func (d *Schema) String() string {
 	json, _ := d.Marshal()
 	return string(json)
 }

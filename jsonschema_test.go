@@ -32,10 +32,10 @@ type ExampleJSONBasic struct {
 }
 
 func (self *propertySuite) TestLoad(c *C) {
-	j := &Document{}
+	j := &Schema{}
 	j.Read(&ExampleJSONBasic{})
 
-	c.Assert(*j, DeepEquals, Document{
+	c.Assert(*j, DeepEquals, Schema{
 		Schema: "http://json-schema.org/schema#",
 		property: property{
 			Type:     "object",
@@ -67,10 +67,10 @@ type ExampleJSONBasicWithTag struct {
 }
 
 func (self *propertySuite) TestLoadWithTag(c *C) {
-	j := &Document{}
+	j := &Schema{}
 	j.Read(&ExampleJSONBasicWithTag{})
 
-	c.Assert(*j, DeepEquals, Document{
+	c.Assert(*j, DeepEquals, Schema{
 		Schema: "http://json-schema.org/schema#",
 		property: property{
 			Type:     "object",
@@ -88,10 +88,10 @@ type ExampleJSONBasicSlices struct {
 }
 
 func (self *propertySuite) TestLoadSliceAndContains(c *C) {
-	j := &Document{}
+	j := &Schema{}
 	j.Read(&ExampleJSONBasicSlices{})
 
-	c.Assert(*j, DeepEquals, Document{
+	c.Assert(*j, DeepEquals, Schema{
 		Schema: "http://json-schema.org/schema#",
 		property: property{
 			Type: "object",
@@ -117,10 +117,10 @@ type ExampleJSONNestedStruct struct {
 }
 
 func (self *propertySuite) TestLoadNested(c *C) {
-	j := &Document{}
+	j := &Schema{}
 	j.Read(&ExampleJSONNestedStruct{})
 
-	c.Assert(*j, DeepEquals, Document{
+	c.Assert(*j, DeepEquals, Schema{
 		Schema: "http://json-schema.org/schema#",
 		property: property{
 			Type: "object",
@@ -144,10 +144,10 @@ type ExampleJSONBasicMaps struct {
 }
 
 func (self *propertySuite) TestLoadMap(c *C) {
-	j := &Document{}
+	j := &Schema{}
 	j.Read(&ExampleJSONBasicMaps{})
 
-	c.Assert(*j, DeepEquals, Document{
+	c.Assert(*j, DeepEquals, Schema{
 		Schema: "http://json-schema.org/schema#",
 		property: property{
 			Type: "object",
@@ -170,10 +170,10 @@ func (self *propertySuite) TestLoadMap(c *C) {
 }
 
 func (self *propertySuite) TestLoadNonStruct(c *C) {
-	j := &Document{}
+	j := &Schema{}
 	j.Read([]string{})
 
-	c.Assert(*j, DeepEquals, Document{
+	c.Assert(*j, DeepEquals, Schema{
 		Schema: "http://json-schema.org/schema#",
 		property: property{
 			Type:  "array",
@@ -183,7 +183,7 @@ func (self *propertySuite) TestLoadNonStruct(c *C) {
 }
 
 func (self *propertySuite) TestString(c *C) {
-	j := &Document{}
+	j := &Schema{}
 	j.Read(true)
 
 	expected := "{\n" +
@@ -195,7 +195,7 @@ func (self *propertySuite) TestString(c *C) {
 }
 
 func (self *propertySuite) TestMarshal(c *C) {
-	j := &Document{}
+	j := &Schema{}
 	j.Read(10)
 
 	expected := "{\n" +

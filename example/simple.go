@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/mcuadros/go-jsonschema-generator"
 )
 
@@ -13,7 +14,7 @@ type ExampleBasic struct {
 }
 
 func main() {
-	s := &jsonschema.Document{}
+	s := &jsonschema.Schema{}
 	s.Read(&ExampleBasic{})
 	fmt.Println(s)
 }
